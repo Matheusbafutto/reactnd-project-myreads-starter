@@ -3,18 +3,61 @@ import * as BooksAPI from '../BooksAPI'
 import '../App.css'
 import Book from './Book'
 
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+};
+
 class Bookshelf extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: [],
+    }
+    this.matchBookToShelf = this.matchBookToShelf.bind(this);
+  }
+
+
+  matchBookToShelf(book) {
+    let shelfName = this.props.shelfName.replaceAll(' ', '');
+    return book.shelf.toUpperCase() === shelfName.toUpperCase();
+  }
+
+  renderBook = (book, i) => {
+    return(
+      <Book
+        key={i}
+        title={book.title}
+        previewLink={book.previewLink}
+        author={book.author}
+      />
+    )
+  }
+
+  componentDidMount() {
+    BooksAPI.getAll().then((result) => {
+      result = result.filter(this.matchBookToShelf);
+      this.setState({
+        books: result,
+      });
+    });
+  }
 
   render() {
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">Currently Reading</h2>
+        <h2 className="bookshelf-title">{this.props.shelfName}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
+
+            <li>
+            { this.state.books.map(this.renderBook) }
+            </li>
             <li>
               <Book
                 title='To Kill a Mockingbird'
-                url='http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api'
+                url='http://books.google.com/books/content?id=32haAAAAMAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72yckZ5f5bDFVIf7BGPbjA0KYYtlQ__nWB-hI_YZmZ-fScYwFy4O_fWOcPwf-pgv3pPQNJP_sT5J_xOUciD8WaKmevh1rUR-1jk7g1aCD_KeJaOpjVu0cm_11BBIUXdxbFkVMdi&source=gbs_api'
                 author='Harper Lee'
               />
             </li>
