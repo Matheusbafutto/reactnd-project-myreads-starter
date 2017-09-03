@@ -29,7 +29,7 @@ class Bookshelf extends Component {
       <li key={i}>
       <Book
         title={book.title}
-        previewLink={book.previewLink}
+        previewLink={book.imageLinks.thumbnail}
         author={book.author}
       />
       </li>
@@ -38,6 +38,7 @@ class Bookshelf extends Component {
 
   componentDidMount() {
     BooksAPI.getAll().then((result) => {
+      console.log(result);
       result = result.filter(this.matchBookToShelf);
       this.setState({
         books: result,
