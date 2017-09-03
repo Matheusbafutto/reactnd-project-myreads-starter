@@ -3,25 +3,12 @@ import * as BooksAPI from '../BooksAPI'
 import '../App.css'
 import Book from './Book'
 
-String.prototype.replaceAll = function(search, replacement) {
-    var target = this;
-    return target.split(search).join(replacement);
-};
-
 class Bookshelf extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      books: [],
-    }
+
     this.matchBookToShelf = this.matchBookToShelf.bind(this);
-  }
-
-
-  matchBookToShelf(book) {
-    let shelfName = this.props.shelfName.replaceAll(' ', '');
-    return book.shelf.toUpperCase() === shelfName.toUpperCase();
   }
 
   renderBook = (book, i) => {
@@ -36,14 +23,9 @@ class Bookshelf extends Component {
     )
   }
 
-  componentDidMount() {
-    BooksAPI.getAll().then((result) => {
-      console.log(result);
-      result = result.filter(this.matchBookToShelf);
-      this.setState({
-        books: result,
-      });
-    });
+  matchBookToShelf(book) {
+    let name = this.props.shelfName.replace(new RegExp(' ', 'g'), '');
+    return book.shelf.toUpperCase() === name.toUpperCase();
   }
 
   render() {
@@ -52,7 +34,7 @@ class Bookshelf extends Component {
         <h2 className="bookshelf-title">{this.props.shelfName}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-            { this.state.books.map(this.renderBook) }
+            { this.props.books.filter(this.matchBookToShelf).map(this.renderBook) }
           </ol>
         </div>
       </div>
