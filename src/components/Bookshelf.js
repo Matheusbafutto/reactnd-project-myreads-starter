@@ -12,12 +12,14 @@ class Bookshelf extends Component {
   }
 
   renderBook = (book, i) => {
+    let { onBookChange } = this.props;
     return(
       <li key={i}>
       <Book
         title={book.title}
         previewLink={book.imageLinks.thumbnail}
         author={book.author}
+        onBookChange={onBookChange}
       />
       </li>
     )

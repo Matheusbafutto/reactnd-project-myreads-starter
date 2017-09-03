@@ -15,6 +15,13 @@ class BooksApp extends React.Component {
     booksAvailable: [],
   }
 
+  handleBookStatusChange(newShelf) {
+    console.log(newShelf);
+    this.setState(state => {
+
+    })
+  }
+
   componentDidMount() {
     BooksAPI.getAll().then((result) => {
       console.log(result);
@@ -58,14 +65,17 @@ class BooksApp extends React.Component {
                 <Bookshelf
                   shelfName='Currently Reading'
                   books={this.state.booksAvailable}
+                  onBookChange={this.handleBookStatusChange}
                 />
                 <Bookshelf
                   shelfName='Want to Read'
                   books={this.state.booksAvailable}
+                  onBookChange={this.handleBookStatusChange}
                 />
                 <Bookshelf
                   shelfName='Read'
                   books={this.state.booksAvailable}
+                  onBookChange={this.handleBookStatusChange}
                 />
               </div>
             </div>
