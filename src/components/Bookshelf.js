@@ -16,9 +16,7 @@ class Bookshelf extends Component {
     return(
       <li key={i}>
       <Book
-        title={book.title}
-        previewLink={book.imageLinks.thumbnail}
-        author={book.author}
+        book={book}
         onBookChange={onBookChange}
       />
       </li>
