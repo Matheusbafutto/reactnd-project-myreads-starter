@@ -24,12 +24,14 @@ class BooksApp extends React.Component {
     let updatedBook = update(book, {
       shelf:{ $set:newShelf }
     })
-
+    // console.log(up);
     updatedBooksAvailable = update(updatedBooksAvailable, { $push:[updatedBook] });
 
     this.setState({
       booksAvailable: updatedBooksAvailable
     });
+
+    BooksAPI.update(updatedBook, updatedBook.shelf);
 
   }
 
