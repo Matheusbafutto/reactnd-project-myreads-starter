@@ -9,7 +9,7 @@ import SearchPage from './components/SearchPage'
 class BooksApp extends React.Component {
   state = {
 
-    booksAvailable: [],
+    booksOnShelves: [],
   }
 
   constructor(props) {
@@ -25,7 +25,7 @@ class BooksApp extends React.Component {
 
   handleBookShelfChange(newShelf, book) {
 
-    let updatedBooksAvailable = this.removeBookFromArray(book, this.state.booksAvailable);
+    let updatedBooksAvailable = this.removeBookFromArray(book, this.state.booksOnShelves);
 
     let updatedBook = update(book, {
       shelf:{ $set:newShelf }
@@ -36,7 +36,7 @@ class BooksApp extends React.Component {
     }
 
     this.setState({
-      booksAvailable: updatedBooksAvailable
+      booksOnShelves: updatedBooksAvailable
     });
 
     BooksAPI.update(updatedBook, updatedBook.shelf);
@@ -46,7 +46,7 @@ class BooksApp extends React.Component {
   componentDidMount() {
     BooksAPI.getAll().then((result) => {
       this.setState({
-        booksAvailable: result,
+        booksOnShelves: result,
       });
     });
   }
@@ -56,7 +56,9 @@ class BooksApp extends React.Component {
       <BrowserRouter>
         <div className="app">
           <Route path='/search' exact render={() => (
-            <SearchPage/>
+            <SearchPage
+              onBookChange={this.handleBookShelfChange}
+            />
           )}/>
 
           <Route path='/' exact render={() => (
@@ -68,17 +70,17 @@ class BooksApp extends React.Component {
                 <div>
                   <Bookshelf
                     shelfName='Currently Reading'
-                    books={this.state.booksAvailable}
+                    books={this.state.booksOnShelves}
                     onBookChange={this.handleBookShelfChange}
                   />
                   <Bookshelf
                     shelfName='Want to Read'
-                    books={this.state.booksAvailable}
+                    books={this.state.booksOnShelves}
                     onBookChange={this.handleBookShelfChange}
                   />
                   <Bookshelf
                     shelfName='Read'
-                    books={this.state.booksAvailable}
+                    books={this.state.booksOnShelves}
                     onBookChange={this.handleBookShelfChange}
                   />
                 </div>

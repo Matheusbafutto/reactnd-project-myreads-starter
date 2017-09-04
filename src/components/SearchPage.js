@@ -6,10 +6,24 @@ import BookList from './BookList'
 
 class SearchPage extends Component {
 
-  componentDidMount() {
-    BooksAPI.search('linux', 20).then((result) => {
-      console.log(result);
-    });
+  state = {
+    booksSearched: [],
+  }
+
+  searchBooks(regExp) {
+    if (regExp !== undefined) {
+      BooksAPI.search(regExp).then((result) => {
+        console.log(result);
+        this.setState({
+          booksSearched: result
+        });
+      });
+    } 
+
+  }
+
+  handleChange = (event) => {
+    this.searchBooks(event.target.value);
   }
 
   render() {
@@ -26,12 +40,15 @@ class SearchPage extends Component {
               However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
               you don't find a specific author or title. Every search is limited by search terms.
             */}
-            <input type="text" placeholder="Search by title or author"/>
+            <input type="text" placeholder="Search by title or author" onChange={this.handleChange}/>
 
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid"></ol>
+          <BookList
+            books={this.state.booksSearched}
+            onBookChange={this.props.onBookChange}
+          />
         </div>
       </div>
     );

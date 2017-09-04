@@ -24,7 +24,6 @@ class Bookshelf extends Component {
           <BookList
             books={this.props.books.filter(this.matchBookToShelf)}
             onBookChange={this.props.onBookChange}
-            shelfName={this.props.shelfName}
           />
         </div>
       </div>

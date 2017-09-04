@@ -8,6 +8,10 @@ class Book extends Component {
     super(props);
   }
 
+  placeBook() {
+    return (this.props.book.hasOwnProperty('shelf')) ? this.props.book.shelf : 'none';
+  }
+
   render() {
     let { onBookChange } = this.props;
 
@@ -16,7 +20,7 @@ class Book extends Component {
         <div className="book-top">
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${ this.props.book.imageLinks.thumbnail }")` }}></div>
           <div className="book-shelf-changer">
-            <select value={this.props.book.shelf} onChange={ (event) => onBookChange(event.target.value, this.props.book) }>
+            <select value={this.placeBook()} onChange={ (event) => onBookChange(event.target.value, this.props.book) }>
               <option value="none" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
