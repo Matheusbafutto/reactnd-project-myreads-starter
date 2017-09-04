@@ -2,9 +2,16 @@ import React, { Component } from 'react'
 import * as BooksAPI from '../BooksAPI'
 import '../App.css'
 import { Link } from 'react-router-dom'
-import Book from './Book'
+import BookList from './BookList'
 
 class SearchPage extends Component {
+
+  componentDidMount() {
+    BooksAPI.search('linux', 20).then((result) => {
+      console.log(result);
+    });
+  }
+
   render() {
     return(
       <div className="search-books">
