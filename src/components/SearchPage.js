@@ -4,28 +4,55 @@ import '../App.css'
 import { Link } from 'react-router-dom'
 import BookList from './BookList'
 
+/**
+  Class representing the app's search page
+  @extends Component
+*/
 class SearchPage extends Component {
 
+  /**
+    SearchPage's component inner state
+    @property {book[]} booksSearched - array of books searched within the text input controlled component
+  */
   state = {
     booksSearched: [],
   }
 
+  /**
+    Creates an instance of SearchPage component
+    @param {object} props - props from parent component
+    @param {function} props.onBookChange - handler for Book select controlled component
+  */
+  constructor(props) {
+    super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  /**
+    Searches for books within the server and assigns them to booksSearched state variable
+    @param {string} regExp - regular expression to match book's title and author
+  */
   searchBooks(regExp) {
-    if (regExp !== undefined) {
-      BooksAPI.search(regExp).then((result) => {
-        console.log(result);
-        this.setState({
-          booksSearched: result
-        });
+    BooksAPI.search(regExp).then((result) => {
+      this.setState({
+        booksSearched: result
       });
-    } 
+    });
 
   }
 
-  handleChange = (event) => {
+  /**
+    Basic handler for the text input controlled component
+    @param {event} event - event trigered on text input change
+  */
+  handleChange(event) {
     this.searchBooks(event.target.value);
   }
 
+  /**
+    Renders SearchPage component
+  */
   render() {
     return(
       <div className="search-books">

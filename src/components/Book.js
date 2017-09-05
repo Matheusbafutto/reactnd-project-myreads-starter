@@ -2,16 +2,32 @@ import React, { Component } from 'react'
 import BooksAPI from '../BooksAPI'
 import '../App.css'
 
+/**
+  Class representing a Book Component
+*/
 class Book extends Component {
 
+  /**
+    Creates an instance of Book
+    @param {object} props - properties passed along from parent component
+    @param {function} props.onBookChange - handler for Book select controlled component
+    @param {book} props.book - book object with specific information about this Book component
+  */
   constructor(props) {
     super(props);
   }
 
+  /**
+    Checks if the book object given on props has a property shelf or not
+    @return {string} - none if shelf is non existant or shelf name otherwise
+  */
   placeBook() {
     return (this.props.book.hasOwnProperty('shelf')) ? this.props.book.shelf : 'none';
   }
 
+  /**
+    Renders a Book component into the DOM
+  */
   render() {
     let { onBookChange } = this.props;
 

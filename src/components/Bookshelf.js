@@ -3,19 +3,39 @@ import * as BooksAPI from '../BooksAPI'
 import '../App.css'
 import BookList from './BookList'
 
+/**
+  Class that represents a Bookshelf
+  @extends Component
+*/
 class Bookshelf extends Component {
 
+  /**
+    Creates an instance of Bookshelf
+    @param {object} props - props received from parent component
+    @param {function} props.onBookChange - handler for Book select controlled component
+    @param {book[]} props.books - array of all books on all shelves
+    @param {string} props.shelfName - name of the shelf component
+  */
   constructor(props) {
     super(props);
 
     this.matchBookToShelf = this.matchBookToShelf.bind(this);
   }
 
+
+  /**
+    Matches names of the Bookshelf component with the specified book
+    @param {book} book - book whose shelf needs to be verified
+    @return {bool} - true if book belongs to Bookshelf and false otherwise
+  */
   matchBookToShelf(book) {
     let name = this.props.shelfName.replace(new RegExp(' ', 'g'), '');
     return book.shelf.toUpperCase() === name.toUpperCase();
   }
 
+  /**
+    Renders Bookshelf component
+  */
   render() {
     return (
       <div className="bookshelf">
