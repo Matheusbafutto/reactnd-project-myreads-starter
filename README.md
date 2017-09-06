@@ -12,8 +12,16 @@ I am addicted to growth and self improvement. That means I constantly have a big
     1. [immutability-helper](https://github.com/kolodny/immutability-helper)
 
 ##ScreenShots
-![Alt text](/src/images/ScreenShot1?raw=true "Optional Title")
-![Alt text](/src/images/ScreenShot2?raw=true "Optional Title")
+![Alt text](/src/images/ScreenShot1.png?raw=true "Optional Title")
+![Alt text](/src/images/ScreenShot2.png?raw=true "Optional Title")
+
+##Installation
+```
+git clone https://github.com/Matheusbafutto/reactnd-project-myreads-starter.git
+npm install
+npm start
+```
+
 
 This is the starter template for the final assessment project for Udacity's React Fundamentals course, developed by [React Training](https://reacttraining.com). The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
 
