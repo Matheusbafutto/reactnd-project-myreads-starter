@@ -56,5 +56,3 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Contributing
 
 Pull request are always welcome!
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
