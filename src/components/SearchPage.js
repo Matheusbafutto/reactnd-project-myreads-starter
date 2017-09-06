@@ -38,9 +38,7 @@ class SearchPage extends Component {
   */
   searchBooks(regExp) {
     BooksAPI.search(regExp).then((result) => {
-      console.log(result);
       result = this.mapResult(result, this.matchBookWithShelves);
-      console.log(result);
       this.setState({
         booksSearched: result
       });
