@@ -1,3 +1,20 @@
+#myReads
+##Intro
+This project my implementation of Udacity's first module project myReads. MyReads is a basic webapp for managing your books. You can add books by searching them within your server and place them anywhere among the bookshelves 'Currently Reading', 'Want To Read' and 'Read'.
+
+##Motivation
+I am addicted to growth and self improvement. That means I constantly have a big pile of books with varying subjects I would like to read. Managing my reads on these books was a constant pain to me, so I've built a tool that helps manage my book list.
+
+##Stack
+ - ReactDOM
+ - NodeJs
+ - npm packages
+    1. [immutability-helper](https://github.com/kolodny/immutability-helper)
+
+##ScreenShots
+![Alt text](/src/images/ScreenShot1?raw=true "Optional Title")
+![Alt text](/src/images/ScreenShot2?raw=true "Optional Title")
+
 This is the starter template for the final assessment project for Udacity's React Fundamentals course, developed by [React Training](https://reacttraining.com). The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
 
 Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
