@@ -59,11 +59,11 @@ class BooksApp extends React.Component {
       updatedBooksAvailable = update(updatedBooksAvailable, { $push:[updatedBook] });
     }
 
-    this.setState({
-      booksOnShelves: updatedBooksAvailable
+    BooksAPI.update(updatedBook, updatedBook.shelf).then(() => {
+      this.setState({
+        booksOnShelves: updatedBooksAvailable
+      });
     });
-
-    BooksAPI.update(updatedBook, updatedBook.shelf);
 
   }
 

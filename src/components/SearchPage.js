@@ -29,6 +29,7 @@ class SearchPage extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
+    this.matchBookWithShelves = this.matchBookWithShelves.bind(this);
   }
 
   /**
