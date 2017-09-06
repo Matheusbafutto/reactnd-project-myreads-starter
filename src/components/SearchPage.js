@@ -22,11 +22,13 @@ class SearchPage extends Component {
     Creates an instance of SearchPage component
     @param {object} props - props from parent component
     @param {function} props.onBookChange - handler for Book select controlled component
+    @param {book[]} props.booksOnShelves - books in shelves on main page
   */
   constructor(props) {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
+    this.searchBooks = this.searchBooks.bind(this);
   }
 
   /**
@@ -35,11 +37,34 @@ class SearchPage extends Component {
   */
   searchBooks(regExp) {
     BooksAPI.search(regExp).then((result) => {
+      console.log(result);
+      result = this.mapResult(result, this.matchBookWithShelves);
+      console.log(result);
       this.setState({
         booksSearched: result
       });
     });
 
+  }
+
+  /**
+    Maps through the books array given
+    @param {book[]} booksSearched - array of books
+    @param {function} checker - function to be called on mapping the array
+    @return {book[]} - same booksSearched array mapped with function checker
+  */
+  mapResult(booksSearched, checker) {
+    return booksSearched.map(checker);
+  }
+
+  /**
+    Finds specified book on props.booksOnShelves and places shelf property on it
+    @param {book} book - book which needs to be found in props.booksOnShelves
+    @return {book} - new book with shelf if aplicable
+  */
+  matchBookWithShelves(book) {
+    let bookFound = this.props.booksOnShelves.find((bookOnshelf) => ( book.id === bookOnshelf.id));
+    return (bookFound !== undefined) ? bookFound : book;
   }
 
   /**
