@@ -1,21 +1,21 @@
-#myReads
-##Intro
+# myReads
+## Intro
 This project my implementation of Udacity's first module project myReads. MyReads is a basic webapp for managing your books. You can add books by searching them within your server and place them anywhere among the bookshelves 'Currently Reading', 'Want To Read' and 'Read'.
 
-##Motivation
+## Motivation
 I am addicted to growth and self improvement. That means I constantly have a big pile of books with varying subjects I would like to read. Managing my reads on these books was a constant pain to me, so I've built a tool that helps manage my book list.
 
-##Stack
+## Stack
  - ReactDOM
  - NodeJs
  - npm packages
     1. [immutability-helper](https://github.com/kolodny/immutability-helper)
 
-##ScreenShots
-![Alt text](/src/images/ScreenShot1.png?raw=true "Optional Title")
+## ScreenShots
 ![Alt text](/src/images/ScreenShot2.png?raw=true "Optional Title")
+![Alt text](/src/images/ScreenShot1.png?raw=true "Optional Title")
 
-##Installation
+## Installation
 ```
 git clone https://github.com/Matheusbafutto/reactnd-project-myreads-starter.git
 npm install
