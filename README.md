@@ -1,6 +1,6 @@
 # myReads
 ## Intro
-This project my implementation of Udacity's first module project myReads. MyReads is a basic webapp for managing your books. You can add books by searching them within your server and place them anywhere among the bookshelves 'Currently Reading', 'Want To Read' and 'Read'.
+This project my implementation of the Udacity module React Fundamentals final project [myReads](https://github.com/udacity/reactnd-project-myreads-starter). MyReads is a basic webapp for managing your books. You can add books by searching them within your server and place them anywhere among the bookshelves 'Currently Reading', 'Want To Read' and 'Read'.
 
 ## Motivation
 I am addicted to growth and self improvement. That means I constantly have a big pile of books with varying subjects I would like to read. Managing my reads on these books was a constant pain to me, so I've built a tool that helps manage my book list.
@@ -16,65 +16,31 @@ I am addicted to growth and self improvement. That means I constantly have a big
 ![Alt text](/src/images/ScreenShot1.png?raw=true "Optional Title")
 
 ## Installation
+Once cloned, just cd inside the project repo and run the following commands:
 ```
-git clone https://github.com/Matheusbafutto/reactnd-project-myreads-starter.git
 npm install
 npm start
 ```
+After that you should be good to go! In case you are looking for some good documentation, this project has jsdoc compatibility. Check out [jsdoc](https://www.npmjs.com/package/jsdoc) to get to know how to generate the doc page.
 
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course, developed by [React Training](https://reacttraining.com). The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+## API reference
+This project has a backend server to store books and keep bookshelf changes persistent.
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
-
-## What You're Getting
-```
-+--public/    
- |-- index.html - DO NOT MODIFY
- |-- favicon.ico - React Icon, You may change if you wish.
-+-- src/
- +-- icons/ - Helpful images for your app. Use at your discretion.
-  |-- add.svg
-  |-- arrow-back.svg
-  |-- arrow-drop-down.svg
- +-- components
-  |-- Book.js - Component abstraction for a Book
-  |-- BookList.js - Component abstraction for a list of books
-  |-- Bookshelf.js - Component abstraction for Bookshelf in main page
-  |-- SearchPage.js - Component for search page
- |-- App.js - This is the root file of the app.
- |-- App.css - Styles for your app. Feel free to customize this as you desire.
- |-- App.test.js - Used for testing. Provided with Create React App.
- Testing is encouraged, but not required.
- |-- BooksAPI.js - A JavaScript API for the provided Udacity backend.
- Instructions for the methods are below.
- |-- index.js - You should not need to modify this file. It is used for DOM rendering only.
- |-- index.css - Global styles. You probably won't need to change anything here.
-|-- .gitignore
-|-- CONTRIBUTING.MD - Information about contributing to this repo.
-TL;DR - Fork and clone your own version of this to use it.
-|-- README.MD - This README file.
-|-- SEARCH_TERMS.md - The whitelisted short collection of available search terms
-for you to use with your app.
-|-- package.json - npm package manager file. It's unlikely that you'll need to modify this.
-```
-
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
-
-## Backend Server
+### Backend Server
 
 To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
 
-### `getAll()`
+#### `getAll()`
 * Returns a Promise which resolves to a JSON object containing a collection of book objects.
 * This collection represents the books currently in the bookshelves in your app.
 
-### `update(book, shelf)`
+#### `update(book, shelf)`
 * book: `<Object>` containing at minimum an `id` attribute
 * shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]  
 * Returns a Promise which resolves to a JSON object containing the response data of the POST request
 
-### `search(query, maxResults)`
+#### `search(query, maxResults)`
 * query: `<String>`
 * maxResults: `<Integer>` Due to the nature of the backend server, search results are capped at 20, even if this is set higher.
 * Returns a Promise which resolves to a JSON object containing a collection of book objects.
@@ -89,6 +55,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+Pull request are always welcome!
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
