@@ -1,4 +1,12 @@
 {
+  "jest": {
+    "collectCoverageFrom":[
+      "src/**/*.{js,sx}",
+      "!src/index.js",
+      "!src/BooksAPI.js"
+    ],
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  },
   "dependencies": {
     "immutability-helper": "^2.3.1",
     "prop-types": "^15.5.8",
@@ -7,12 +15,16 @@
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^1.5.1",
+    "react-scripts": "0.9.5",
+    "react-test-renderer": "^15.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:coverage": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject"
   }
 }
