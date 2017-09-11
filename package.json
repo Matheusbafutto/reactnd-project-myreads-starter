@@ -1,15 +1,17 @@
 {
   "jest": {
-    "collectCoverageFrom":[
+    "collectCoverageFrom": [
       "src/**/*.{js,sx}",
       "!src/index.js",
       "!src/BooksAPI.js"
     ],
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "dependencies": {
     "immutability-helper": "^2.3.1",
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router-dom": "^4.2.2"

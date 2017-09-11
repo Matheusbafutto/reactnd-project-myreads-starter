@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import * as BooksAPI from '../BooksAPI'
 import '../App.css'
 import Book from './Book'
+import Proptypes from 'prop-types'
 
 /**
   Class that represents a list of Books
@@ -47,6 +48,19 @@ class BookList extends Component {
       </ol>
     );
   }
+}
+
+BookList.propTypes = {
+  books: Proptypes.arrayOf(
+    Proptypes.shape({
+      imageLinks: Proptypes.shape({
+        thumbnail: Proptypes.string
+      }),
+      title: Proptypes.string,
+      author: Proptypes.string
+    })
+  ).isRequired,
+  onBookChange: Proptypes.func.isRequired,
 }
 
 export default BookList;

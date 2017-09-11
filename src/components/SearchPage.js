@@ -3,6 +3,7 @@ import * as BooksAPI from '../BooksAPI'
 import '../App.css'
 import { Link } from 'react-router-dom'
 import BookList from './BookList'
+import Proptypes from 'prop-types'
 
 /**
   Class representing the app's search page
@@ -104,6 +105,19 @@ class SearchPage extends Component {
       </div>
     );
   }
+}
+
+SearchPage.propTypes = {
+  booksOnShelves: Proptypes.arrayOf(
+    Proptypes.shape({
+      imageLinks: Proptypes.shape({
+        thumbnail: Proptypes.string
+      }),
+      title: Proptypes.string,
+      author: Proptypes.string
+    })
+  ).isRequired,
+  onBookChange: Proptypes.func.isRequired,
 }
 
 export default SearchPage;

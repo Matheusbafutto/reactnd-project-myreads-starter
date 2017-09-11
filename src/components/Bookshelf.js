@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import * as BooksAPI from '../BooksAPI'
 import '../App.css'
 import BookList from './BookList'
+import Proptypes from 'prop-types'
 
 /**
   Class that represents a Bookshelf
@@ -50,6 +50,20 @@ class Bookshelf extends Component {
     );
   }
 
+}
+
+Bookshelf.propTypes = {
+  books: Proptypes.arrayOf(
+    Proptypes.shape({
+      imageLinks: Proptypes.shape({
+        thumbnail: Proptypes.string
+      }),
+      title: Proptypes.string,
+      author: Proptypes.string
+    })
+  ).isRequired,
+  onBookChange: Proptypes.func.isRequired,
+  shelfName: Proptypes.string
 }
 
 export default Bookshelf;

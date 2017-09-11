@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import BooksAPI from '../BooksAPI'
+import Proptypes from 'prop-types'
 import '../App.css'
 
 /**
@@ -51,6 +51,17 @@ class Book extends Component {
     );
   }
 
+}
+
+Book.propTypes = {
+  book: Proptypes.shape({
+    imageLinks: Proptypes.shape({
+      thumbnail: Proptypes.string
+    }),
+    title: Proptypes.string,
+    author: Proptypes.string
+  }).isRequired,
+  onBookChange: Proptypes.func.isRequired
 }
 
 export default Book;
