@@ -4,6 +4,7 @@ import '../App.css'
 import { Link } from 'react-router-dom'
 import BookList from './BookList'
 import Proptypes from 'prop-types'
+import { debounce } from 'throttle-debounce'
 
 /**
   Class representing the app's search page
@@ -31,20 +32,29 @@ class SearchPage extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.searchBooks = this.searchBooks.bind(this);
     this.matchBookWithShelves = this.matchBookWithShelves.bind(this);
+    this.apiSearchCall = debounce(500, this.apiSearchCall);
+  }
+
+  /**
+    Calls apiSearchCall method passing regular expression string regExp
+    @param {string} regExp - regular expression to match book's title and author
+  */
+  searchBooks(regExp) {
+    this.apiSearchCall(regExp);
   }
 
   /**
     Searches for books within the server and assigns them to booksSearched state variable
     @param {string} regExp - regular expression to match book's title and author
   */
-  searchBooks(regExp) {
+  apiSearchCall(regExp) {
     BooksAPI.search(regExp).then((result) => {
+      console.log('ajax call');
       result = this.mapResult(result, this.matchBookWithShelves);
       this.setState({
         booksSearched: result
       });
     });
-
   }
 
   /**
