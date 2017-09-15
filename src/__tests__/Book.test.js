@@ -7,8 +7,6 @@ const Proptypes = {
   func: {},
 }
 
-jest.dontMock('../components/Book');
-
 //basic shallow render test
 it('renders book without crashing', () => {
   expect(shallow(<Book book={book} onBookChange={onBookChange} />)).toMatchSnapshot();
