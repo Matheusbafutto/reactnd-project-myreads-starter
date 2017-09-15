@@ -21,8 +21,8 @@ class Book extends Component {
     Checks if the book object given on props has a property shelf or not
     @return {string} - none if shelf is non existant or shelf name otherwise
   */
-  placeBook() {
-    return (this.props.book.hasOwnProperty('shelf')) ? this.props.book.shelf : 'none';
+  placeBook(book) {
+    return (book.hasOwnProperty('shelf')) ? book.shelf : 'none';
   }
 
   /**
@@ -36,7 +36,13 @@ class Book extends Component {
         <div className="book-top">
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${ this.props.book.imageLinks.thumbnail }")` }}></div>
           <div className="book-shelf-changer">
-            <select value={this.placeBook()} onChange={ (event) => onBookChange(event.target.value, this.props.book) }>
+            <select
+              value={this.placeBook(this.props.book)}
+              onChange={ (event) => {
+                // console.log(event);
+                onBookChange(event.target.value, this.props.book);
+              }
+            }>
               <option value="none" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
