@@ -7,5 +7,5 @@ it('renders without crashing', () => {
 
 it('matchBookToShelf method works properly',() => {
   const BookshelfWrapper = shallow(<Bookshelf shelfName='Read' onBookChange={onBookChange} books={books} />);
-  expect(BookshelfWrapper.instance().matchBookToShelf(books)).toBe(true);
+  expect(BookshelfWrapper.instance().matchBookToShelf(book)).toBe(true);
 });

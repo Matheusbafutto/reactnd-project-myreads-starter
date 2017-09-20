@@ -15,6 +15,7 @@ const book = {
   imageLinks: { thumbnail: 'mock' },
   title: 'teste',
   author: 'Matheus',
+  shelf: 'read'
 }
 const books = [
   {
