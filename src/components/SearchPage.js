@@ -48,8 +48,10 @@ class SearchPage extends Component {
     @param {string} regExp - regular expression to match book's title and author
   */
   apiSearchCall(regExp) {
+    if (regExp.length < 1) return;
     BooksAPI.search(regExp).then((result) => {
-      result = this.mapResult(result, this.matchBookWithShelves);
+      result = (result.hasOwnProperty('error')) ?
+        [] : this.mapResult(result, this.matchBookWithShelves);
       this.setState({
         booksSearched: result
       });
