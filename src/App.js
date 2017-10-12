@@ -58,12 +58,12 @@ class BooksApp extends React.Component {
     if ( newShelf !== 'None' ) {
       updatedBooksAvailable = update(updatedBooksAvailable, { $push:[updatedBook] });
     }
-
-    BooksAPI.update(updatedBook, updatedBook.shelf).then(() => {
-      this.setState({
-        booksOnShelves: updatedBooksAvailable
-      });
+    BooksAPI.update(updatedBook, updatedBook.shelf).then((resolve) => {
     });
+    this.setState({
+      booksOnShelves: updatedBooksAvailable
+    });
+    return (updatedBooksAvailable);
 
   }
 
@@ -75,6 +75,7 @@ class BooksApp extends React.Component {
       this.setState({
         booksOnShelves: result,
       });
+      return result;
     });
   }
 

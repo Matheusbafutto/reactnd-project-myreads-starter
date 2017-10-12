@@ -13,7 +13,7 @@ it('renders book without crashing', () => {
 });
 
 //test bookshelf change handler
-describe('Bookshelf change handler',() =>{
+describe('Bookshelf change handler',() => {
 
   let bookWrapper = mount(<Book book={book} onBookChange={onBookChange} />);
   bookWrapper.find('select').simulate('change', { taget:{ value:'read' } });
